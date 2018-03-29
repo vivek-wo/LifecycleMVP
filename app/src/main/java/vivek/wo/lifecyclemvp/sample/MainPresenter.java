@@ -12,8 +12,9 @@ import vivek.wo.lifecyclemvp.data.TaskRepository;
  */
 
 public class MainPresenter implements MainContact.Presenter {
+    MainContact.View mView;
 
-    private static final String TAG ="MainPresenter" ;
+    private static final String TAG = "MainPresenter";
 
     TaskRepository mTaskRepository;
     SharedPreferences mSharedPreferences;
@@ -24,5 +25,15 @@ public class MainPresenter implements MainContact.Presenter {
         mSharedPreferences = sharedPreferences;
         Log.d(TAG, "MainPresenter: " + mTaskRepository);
         Log.d(TAG, "MainPresenter: " + mSharedPreferences);
+    }
+
+    @Override
+    public void takeView(MainContact.View view) {
+        mView = view;
+    }
+
+    @Override
+    public void dropView() {
+        mView = null;
     }
 }

@@ -19,4 +19,14 @@ public class ListPresenter implements ListContact.Presenter {
         mTaskRepository = taskRepository;
         Log.d(TAG, "MainFragmentPresenter: " + mTaskRepository);
     }
+
+    @Override
+    public void takeView(ListContact.View view) {
+        
+    }
+
+    @Override
+    public void dropView() {
+
+    }
 }

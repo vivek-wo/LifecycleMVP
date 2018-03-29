@@ -18,7 +18,8 @@ import vivek.wo.lifecyclemvp.sample.detail.DetailFragment;
 import vivek.wo.lifecyclemvp.sample.list.ListActivity;
 import vivek.wo.lifecyclemvp.sample.main.MainFragment;
 
-public class MainActivity extends AppCompatActivity implements HasSupportFragmentInjector {
+public class MainActivity extends AppCompatActivity implements HasSupportFragmentInjector,
+        MainContact.View {
     private static final String TAG = "MainActivity";
 
     @Inject
@@ -37,6 +38,13 @@ public class MainActivity extends AppCompatActivity implements HasSupportFragmen
                 .commit();
         Log.d(TAG, "onCreate: " + dispatchingAndroidInjector);
         Log.d(TAG, "onCreate: " + mainPresenter);
+        mainPresenter.takeView(this);
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mainPresenter.dropView();
     }
 
     @Override

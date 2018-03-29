@@ -23,4 +23,14 @@ public class DetailFragmentPresenter implements DetailFragmentContact.Presenter 
         Log.d(TAG, "DetailFragmentPresenter: " + mTaskRepository);
         Log.d(TAG, "DetailFragmentPresenter: " + mSharedPreferences);
     }
+
+    @Override
+    public void takeView(DetailFragmentContact.View view) {
+        
+    }
+
+    @Override
+    public void dropView() {
+
+    }
 }

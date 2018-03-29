@@ -24,4 +24,14 @@ public class MainFragmentPresenter implements MainFragmentContact.Presenter {
         Log.d(TAG, "MainFragmentPresenter: " + mTaskRepository);
         Log.d(TAG, "MainFragmentPresenter: " + mSharedPreferences);
     }
+
+    @Override
+    public void takeView(MainFragmentContact.View view) {
+
+    }
+
+    @Override
+    public void dropView() {
+
+    }
 }
