@@ -1,2 +1,2 @@
 # LifecycleMVP
-基于dagger的MVP实现Demo
+基于Google Dagger2的MVP实现
