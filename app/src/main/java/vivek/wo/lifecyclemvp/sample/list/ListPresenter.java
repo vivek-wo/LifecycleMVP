@@ -12,21 +12,13 @@ import vivek.wo.lifecyclemvp.data.TaskRepository;
 
 public class ListPresenter implements ListContact.Presenter {
     private static final String TAG = "ListPresenter";
+    ListContact.View mView;
     TaskRepository mTaskRepository;
 
     @Inject
-    ListPresenter(TaskRepository taskRepository) {
+    ListPresenter(ListContact.View view, TaskRepository taskRepository) {
+        mView = view;
         mTaskRepository = taskRepository;
         Log.d(TAG, "MainFragmentPresenter: " + mTaskRepository);
-    }
-
-    @Override
-    public void takeView(ListContact.View view) {
-        
-    }
-
-    @Override
-    public void dropView() {
-
     }
 }

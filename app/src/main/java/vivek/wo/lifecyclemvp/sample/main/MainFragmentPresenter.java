@@ -14,24 +14,18 @@ import vivek.wo.lifecyclemvp.data.TaskRepository;
 public class MainFragmentPresenter implements MainFragmentContact.Presenter {
     private static final String TAG = "MainFragmentPresenter";
 
+    MainFragmentContact.View mView;
     TaskRepository mTaskRepository;
     SharedPreferences mSharedPreferences;
 
     @Inject
-    MainFragmentPresenter(TaskRepository taskRepository, SharedPreferences sharedPreferences) {
+    MainFragmentPresenter(MainFragmentContact.View view, TaskRepository taskRepository,
+                          SharedPreferences sharedPreferences) {
+        mView = view;
         mTaskRepository = taskRepository;
         mSharedPreferences = sharedPreferences;
         Log.d(TAG, "MainFragmentPresenter: " + mTaskRepository);
         Log.d(TAG, "MainFragmentPresenter: " + mSharedPreferences);
     }
 
-    @Override
-    public void takeView(MainFragmentContact.View view) {
-
-    }
-
-    @Override
-    public void dropView() {
-
-    }
 }

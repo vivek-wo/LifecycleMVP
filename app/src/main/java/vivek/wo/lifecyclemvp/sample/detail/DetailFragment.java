@@ -12,8 +12,7 @@ import android.widget.FrameLayout;
 
 import javax.inject.Inject;
 
-import dagger.android.AndroidInjection;
-import dagger.android.support.AndroidSupportInjection;
+import vivek.wo.lifecyclemvp.BaseApplication;
 
 /**
  * Created by VIVEK-WO on 2018/3/26.
@@ -26,8 +25,17 @@ public class DetailFragment extends Fragment implements DetailFragmentContact.Vi
 
     @Override
     public void onAttach(Context context) {
-        AndroidSupportInjection.inject(this);
         super.onAttach(context);
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        DaggerDetailFragmentComponent.builder()
+                .baseApplicationComponent(((BaseApplication) getActivity().getApplicationContext())
+                        .getBaseApplicationComponent())
+                .detaiFragmentlModule(new DetaiFragmentlModule(this))
+                .build().inject(this);
     }
 
     @Nullable

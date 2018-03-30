@@ -9,7 +9,7 @@ import vivek.wo.lifecyclemvp.BaseView;
 
 public class MainFragmentContact {
 
-    interface Presenter extends BasePresenter<View> {
+    interface Presenter extends BasePresenter {
 
     }
 

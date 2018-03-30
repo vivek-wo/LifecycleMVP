@@ -1,37 +1,26 @@
 package vivek.wo.lifecyclemvp;
 
-import android.content.Context;
+import android.content.SharedPreferences;
 
 import javax.inject.Singleton;
 
-import dagger.BindsInstance;
 import dagger.Component;
-import dagger.android.AndroidInjectionModule;
-import dagger.android.AndroidInjector;
-import dagger.android.support.AndroidSupportInjectionModule;
 import vivek.wo.lifecyclemvp.data.PersistentModule;
 import vivek.wo.lifecyclemvp.data.TaskRepository;
+import vivek.wo.lifecyclemvp.data.source.ApiServiceModule;
+import vivek.wo.lifecyclemvp.data.source.OkHttpClientModule;
 
 /**
  * Created by VIVEK-WO on 2018/3/23.
  */
 @Singleton
-@Component(modules = {AndroidInjectionModule.class,
-        AndroidSupportInjectionModule.class,
-        PersistentModule.class,
-        BaseActivityModule.class})
-public interface BaseApplicationComponent extends AndroidInjector<BaseApplication> {
+@Component(modules = {PersistentModule.class,
+        ApiServiceModule.class,
+        OkHttpClientModule.class,
+        ApplicationModule.class})
+public interface BaseApplicationComponent {
 
     TaskRepository getTaskRepository();
 
-    //Context getApplicationContext();
-
-    @Component.Builder
-    interface Builder {
-        BaseApplicationComponent build();
-
-        @BindsInstance
-        Builder applicationContext(Context context);
-    }
-
+    SharedPreferences getSharedPreferences();
 }

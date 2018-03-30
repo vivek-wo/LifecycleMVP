@@ -3,11 +3,8 @@ package vivek.wo.lifecyclemvp.data;
 import android.content.Context;
 import android.content.SharedPreferences;
 
-import java.util.prefs.Preferences;
-
 import javax.inject.Singleton;
 
-import dagger.Component;
 import dagger.Module;
 import dagger.Provides;
 
@@ -17,9 +14,9 @@ import dagger.Provides;
 @Module
 public class PersistentModule {
 
-    @Singleton
     @Provides
-    SharedPreferences providePreference(Context context) {
+    @Singleton
+    SharedPreferences provideSharedPreferences(Context context) {
         return context.getSharedPreferences("shared_pref", Context.MODE_PRIVATE);
     }
 

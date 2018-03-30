@@ -11,7 +11,7 @@ import android.widget.FrameLayout;
 
 import javax.inject.Inject;
 
-import dagger.android.AndroidInjection;
+import vivek.wo.lifecyclemvp.BaseApplication;
 
 /**
  * Created by VIVEK-WO on 2018/3/26.
@@ -24,7 +24,6 @@ public class ListActivity extends AppCompatActivity implements ListContact.View 
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
-        AndroidInjection.inject(this);
         super.onCreate(savedInstanceState);
         FrameLayout layout = new FrameLayout(this);
         layout.setBackgroundColor(Color.GREEN);
@@ -40,6 +39,11 @@ public class ListActivity extends AppCompatActivity implements ListContact.View 
             }
         });
         setContentView(layout);
+        DaggerListComponent.builder()
+                .baseApplicationComponent(((BaseApplication) getApplicationContext())
+                        .getBaseApplicationComponent())
+                .listModule(new ListModule(this))
+                .build().inject(this);
     }
 
     @Override

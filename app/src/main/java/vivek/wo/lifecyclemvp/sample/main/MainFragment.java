@@ -12,7 +12,7 @@ import android.widget.FrameLayout;
 
 import javax.inject.Inject;
 
-import dagger.android.support.AndroidSupportInjection;
+import vivek.wo.lifecyclemvp.BaseApplication;
 
 /**
  * Created by VIVEK-WO on 2018/3/26.
@@ -25,8 +25,17 @@ public class MainFragment extends Fragment implements MainFragmentContact.View {
 
     @Override
     public void onAttach(Context context) {
-        AndroidSupportInjection.inject(this);
         super.onAttach(context);
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        DaggerMainFragmentComponent.builder()
+                .baseApplicationComponent(((BaseApplication) getActivity().getApplicationContext())
+                        .getBaseApplicationComponent())
+                .mainFragmentModule(new MainFragmentModule(this))
+                .build().inject(this);
     }
 
     @Nullable
